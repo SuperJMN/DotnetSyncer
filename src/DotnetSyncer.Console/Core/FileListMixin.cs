@@ -3,7 +3,7 @@ using Zafiro.FileSystem;
 using Zafiro.FileSystem.Lightweight;
 using Zafiro.FileSystem.NewComparer;
 
-namespace AvaloniaSyncer.Console;
+namespace AvaloniaSyncer.Console.Core;
 
 public static class FileListMixin
 {

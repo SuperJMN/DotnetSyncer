@@ -14,8 +14,8 @@
 	<ItemGroup>
 		<PackageReference Include="CommandLineParser" Version="2.9.1" />
 		<PackageReference Include="Serilog.Sinks.Console" Version="5.0.1" />
-		<PackageReference Include="Zafiro.FileSystem.Local" Version="6.0.1" />
-		<PackageReference Include="Zafiro.FileSystem.SeaweedFS" Version="6.0.1" />
+		<PackageReference Include="Zafiro.FileSystem.Local" Version="6.0.2" />
+		<PackageReference Include="Zafiro.FileSystem.SeaweedFS" Version="6.0.2" />
 	</ItemGroup>
 
 </Project>

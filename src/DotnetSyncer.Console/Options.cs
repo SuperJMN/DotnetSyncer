@@ -1,5 +1,7 @@
 ﻿using CommandLine;
 
+namespace AvaloniaSyncer.Console;
+
 public class Options
 {
     [Option("left", Required = true)]

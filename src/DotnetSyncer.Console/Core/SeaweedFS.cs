@@ -4,7 +4,7 @@ using Zafiro.FileSystem.Lightweight;
 using Zafiro.FileSystem.SeaweedFS;
 using Zafiro.FileSystem.SeaweedFS.Filer.Client;
 
-namespace AvaloniaSyncer.Console;
+namespace AvaloniaSyncer.Console.Core;
 
 public class SeaweedFS : ISyncFileSystem
 {

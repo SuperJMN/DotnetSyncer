@@ -2,7 +2,7 @@
 using Zafiro.FileSystem;
 using Zafiro.FileSystem.Lightweight;
 
-namespace AvaloniaSyncer.Console;
+namespace AvaloniaSyncer.Console.Core;
 
 public interface ISyncFileSystem
 {
