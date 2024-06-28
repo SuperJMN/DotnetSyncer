@@ -1,9 +1,7 @@
 ﻿using MoreLinq.Extensions;
-using Zafiro.FileSystem;
-using Zafiro.FileSystem.Lightweight;
-using Zafiro.FileSystem.NewComparer;
+using Zafiro.FileSystem.Comparer;
 
-namespace AvaloniaSyncer.Console.Core;
+namespace DotnetSyncer.Console.Core;
 
 public static class FileListMixin
 {

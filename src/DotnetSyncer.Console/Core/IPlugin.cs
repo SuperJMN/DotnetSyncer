@@ -1,6 +1,4 @@
-﻿using CSharpFunctionalExtensions;
-
-namespace AvaloniaSyncer.Console.Core;
+﻿namespace DotnetSyncer.Console.Core;
 
 public interface IPlugin
 {

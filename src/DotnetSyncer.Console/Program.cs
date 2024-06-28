@@ -1,9 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using AvaloniaSyncer.Console;
-using AvaloniaSyncer.Console.Core;
 using CommandLine;
-using CSharpFunctionalExtensions;
+using DotnetSyncer.Console;
+using DotnetSyncer.Console.Core;
 using Serilog;
 using Zafiro.CSharpFunctionalExtensions;
 
