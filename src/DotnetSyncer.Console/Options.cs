@@ -1,6 +1,6 @@
 ﻿using CommandLine;
 
-namespace AvaloniaSyncer.Console;
+namespace DotnetSyncer.Console;
 
 public class Options
 {

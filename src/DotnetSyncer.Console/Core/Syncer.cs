@@ -1,10 +1,8 @@
-﻿using CSharpFunctionalExtensions;
-using Serilog;
+﻿using Serilog;
 using Zafiro.CSharpFunctionalExtensions;
-using Zafiro.FileSystem;
-using Zafiro.FileSystem.NewComparer;
+using Zafiro.FileSystem.Comparer;
 
-namespace AvaloniaSyncer.Console.Core;
+namespace DotnetSyncer.Console.Core;
 
 public class Syncer
 {

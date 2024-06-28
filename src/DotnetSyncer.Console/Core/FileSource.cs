@@ -1,8 +1,6 @@
-﻿using CSharpFunctionalExtensions;
-using Zafiro.FileSystem;
-using Zafiro.FileSystem.Lightweight;
+﻿using IDirectory = Zafiro.FileSystem.Readonly.IDirectory;
 
-namespace AvaloniaSyncer.Console.Core;
+namespace DotnetSyncer.Console.Core;
 
 public record FileSource
 {

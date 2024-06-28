@@ -1,8 +1,8 @@
-﻿using CSharpFunctionalExtensions;
-using Zafiro.FileSystem;
-using Zafiro.FileSystem.Lightweight;
+﻿using Zafiro.FileSystem.Readonly;
+using IDirectory = Zafiro.FileSystem.Readonly.IDirectory;
+using IFile = Zafiro.FileSystem.Readonly.IFile;
 
-namespace AvaloniaSyncer.Console.Core;
+namespace DotnetSyncer.Console.Core;
 
 public interface ISyncFileSystem
 {

@@ -1,10 +1,10 @@
-﻿using CSharpFunctionalExtensions;
-using Zafiro.FileSystem;
-using Zafiro.FileSystem.Lightweight;
+﻿using Zafiro.FileSystem.Readonly;
 using Zafiro.FileSystem.SeaweedFS;
 using Zafiro.FileSystem.SeaweedFS.Filer.Client;
+using IDirectory = Zafiro.FileSystem.Readonly.IDirectory;
+using IFile = Zafiro.FileSystem.Readonly.IFile;
 
-namespace AvaloniaSyncer.Console.Core;
+namespace DotnetSyncer.Console.Core;
 
 public class SeaweedFS : ISyncFileSystem
 {
@@ -21,7 +21,7 @@ public class SeaweedFS : ISyncFileSystem
     public Task<Result<IDirectory>> GetFiles(ZafiroPath path)
     {
         return SeaweedFSDirectory.From(path, seaweedFSClient)
-            .Bind(x => x.ToLightweight());
+            .Bind(x => x.ToDirectory());
     }
 
     public Task<Result> Copy(IFile left, ZafiroPath destinationFileName)
