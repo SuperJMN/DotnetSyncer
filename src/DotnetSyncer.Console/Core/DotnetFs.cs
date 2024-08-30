@@ -1,5 +1,5 @@
-﻿using Zafiro.FileSystem.Local;
-using Zafiro.FileSystem.Local.Mutable;
+﻿using Zafiro.FileSystem.Mutable;
+using FileSystem = Zafiro.FileSystem.Local.FileSystem;
 using IDirectory = Zafiro.FileSystem.Readonly.IDirectory;
 using IFile = Zafiro.FileSystem.Readonly.IFile;
 
@@ -7,11 +7,11 @@ namespace DotnetSyncer.Console.Core;
 
 public class DotnetFs : ISyncFileSystem
 {
-    private readonly DotNetMutableFileSystem fs;
+    private readonly IMutableFileSystem fs;
 
     private DotnetFs()
     {
-        fs = new DotNetMutableFileSystem(new FileSystem());
+        fs = new FileSystem(new System.IO.Abstractions.FileSystem());
     }
 
     public string Name => "local";
