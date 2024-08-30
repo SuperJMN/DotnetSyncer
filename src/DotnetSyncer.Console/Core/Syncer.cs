@@ -13,14 +13,14 @@ public class Syncer
         this.logger = logger;
     }
 
-    public Task<Result> Sync(FileSource left, FileSource right)
+    public async Task<Result> Sync(FileSource left, FileSource right)
     {
         logger.Execute(l => l.Information("Syncing {Left} and {Right}", left, right));
 
-        var leftResult = left.GetFiles().Map(x => x.RootedFiles());
-        var rightResult = right.GetFiles().Map(x => x.RootedFiles());
+        var leftResult = await left.GetFiles().Map(x => x.RootedFiles());
+        var rightResult = await right.GetFiles().Map(x => x.RootedFiles());
 
-        return leftResult
+        return await leftResult
             .CombineAndMap(rightResult, (l, r) => l.Diff(r))
             .Bind(s => s.Select(diff => ProcessDiff(diff, left, right)).Combine());
     }

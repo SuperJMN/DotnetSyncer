@@ -16,7 +16,7 @@ await Parser.Default
     .ParseArguments<Options>(args)
     .WithParsedAsync(options =>
     {
-        var factory = new FileSourceFactory(plugins);
+        var factory = new FileSourceFactory(plugins, Log.Logger.AsMaybe());
         var leftSource = factory.GetFileSource(options.Left);
         var rightSource = factory.GetFileSource(options.Right);
 

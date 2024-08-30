@@ -1,12 +1,16 @@
-﻿namespace DotnetSyncer.Console.Core;
+﻿using Serilog;
+
+namespace DotnetSyncer.Console.Core;
 
 public class FileSourceFactory
 {
     public IEnumerable<IPlugin> Plugins { get; }
+    public Maybe<ILogger> Logger { get; }
 
-    public FileSourceFactory(IEnumerable<IPlugin> plugins)
+    public FileSourceFactory(IEnumerable<IPlugin> plugins, Maybe<ILogger> logger)
     {
         Plugins = plugins;
+        Logger = logger;
     }
 
     public Task<Result<FileSource>> GetFileSource(string str)
@@ -21,7 +25,7 @@ public class FileSourceFactory
                 var args = parts[1];
                 return Plugins.TryFirst(x => x.Name.Equals(pluginName))
                     .ToResult("Plugin not found")
-                    .Map(plugin => plugin.Create(args))
+                    .Map(plugin => plugin.Create(args, Logger))
                     .Map(x => new FileSource(x, parts[2]));
             });
     }
