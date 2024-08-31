@@ -6,5 +6,9 @@ public class DotnetFsPlugin : IPlugin
 {
     public string Name => "local";
     public string FriendlyName => "Local Filesystem";
-    public Task<Result<ISyncFileSystem>> Create(string args, Maybe<ILogger> logger) => DotnetFs.Create().Map(x => (ISyncFileSystem)x);
+
+    public Task<Result<ISyncFileSystem>> Create(string args, Maybe<ILogger> logger)
+    {
+        return DotnetFs.Create().Map(x => (ISyncFileSystem)x);
+    }
 }

@@ -1,5 +1,4 @@
-﻿using Zafiro.FileSystem.Readonly;
-using IDirectory = Zafiro.FileSystem.Readonly.IDirectory;
+﻿using IDirectory = Zafiro.FileSystem.Readonly.IDirectory;
 using IFile = Zafiro.FileSystem.Readonly.IFile;
 
 namespace DotnetSyncer.Console.Core;

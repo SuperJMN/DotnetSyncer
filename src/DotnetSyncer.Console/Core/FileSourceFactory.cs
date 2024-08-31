@@ -4,14 +4,14 @@ namespace DotnetSyncer.Console.Core;
 
 public class FileSourceFactory
 {
-    public IEnumerable<IPlugin> Plugins { get; }
-    public Maybe<ILogger> Logger { get; }
-
     public FileSourceFactory(IEnumerable<IPlugin> plugins, Maybe<ILogger> logger)
     {
         Plugins = plugins;
         Logger = logger;
     }
+
+    public IEnumerable<IPlugin> Plugins { get; }
+    public Maybe<ILogger> Logger { get; }
 
     public Task<Result<FileSource>> GetFileSource(string str)
     {

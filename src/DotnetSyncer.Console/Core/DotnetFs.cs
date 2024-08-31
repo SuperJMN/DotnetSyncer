@@ -32,5 +32,8 @@ public class DotnetFs : ISyncFileSystem
         return new DotnetFs();
     }
 
-    public override string ToString() => DisplayName;
+    public override string ToString()
+    {
+        return DisplayName;
+    }
 }

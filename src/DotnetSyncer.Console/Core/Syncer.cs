@@ -53,7 +53,7 @@ public class Syncer
         result.TapError(err => logger.Execute(l => l.Error(err)));
         return result;
     }
-    
+
     private async Task<Result> RightOnly(RightOnlyDiff rightOnlyDiff, FileSource left, FileSource right)
     {
         logger.Execute(l => l.Information("Right only: {Left} => {Right} : {Name} ", left, right, rightOnlyDiff.Right));

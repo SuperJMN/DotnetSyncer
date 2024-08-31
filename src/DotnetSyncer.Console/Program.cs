@@ -4,11 +4,12 @@ using CommandLine;
 using DotnetSyncer.Console;
 using DotnetSyncer.Console.Core;
 using Serilog;
+using Serilog.Events;
 using Zafiro.CSharpFunctionalExtensions;
 
 var plugins = new IPlugin[] { new DotnetFsPlugin(), new SeaweedFSPlugin() };
 
-Log.Logger = new LoggerConfiguration()
+ILogger logger = new LoggerConfiguration()
     .WriteTo.Console()
     .CreateLogger();
 
@@ -16,11 +17,11 @@ await Parser.Default
     .ParseArguments<Options>(args)
     .WithParsedAsync(options =>
     {
-        var factory = new FileSourceFactory(plugins, Log.Logger.AsMaybe());
+        var factory = new FileSourceFactory(plugins, Maybe<ILogger>.None);
         var leftSource = factory.GetFileSource(options.Left);
         var rightSource = factory.GetFileSource(options.Right);
 
         return leftSource
-            .CombineAndBind(rightSource, (left, right) => new Syncer(Maybe.From(Log.Logger)).Sync(left, right))
-            .Log();
+            .CombineAndBind(rightSource, (left, right) => new Syncer(logger.AsMaybe()).Sync(left, right))
+            .Log(logger: logger);
     });

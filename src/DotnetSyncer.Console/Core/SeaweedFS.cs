@@ -3,6 +3,7 @@ using Microsoft.Extensions.Http.Logging;
 using Serilog;
 using Zafiro.FileSystem.SeaweedFS.Filer.Client;
 using Zafiro.Misc;
+using Directory = Zafiro.FileSystem.SeaweedFS.Directory;
 using IDirectory = Zafiro.FileSystem.Readonly.IDirectory;
 using IFile = Zafiro.FileSystem.Readonly.IFile;
 
@@ -10,7 +11,6 @@ namespace DotnetSyncer.Console.Core;
 
 public class SeaweedFS : ISyncFileSystem
 {
-    public Maybe<ILogger> Logger { get; }
     private readonly ISeaweedFS seaweedFSClient;
 
     private SeaweedFS(ISeaweedFS seaweedFSClient, Maybe<ILogger> logger)
@@ -19,12 +19,14 @@ public class SeaweedFS : ISyncFileSystem
         this.seaweedFSClient = seaweedFSClient;
     }
 
+    public Maybe<ILogger> Logger { get; }
+
     public string Name => "seaweedfs";
     public string DisplayName => "SeaweedFS";
 
     public Task<Result<IDirectory>> GetFiles(ZafiroPath path)
     {
-        return Zafiro.FileSystem.SeaweedFS.Directory.From(path, seaweedFSClient)
+        return Directory.From(path, seaweedFSClient)
             .Bind(x => x.ToDirectory());
     }
 
@@ -52,7 +54,7 @@ public class SeaweedFS : ISyncFileSystem
         var handler = GetHandler(logger);
         return new HttpClient(handler)
         {
-            BaseAddress = new Uri(baseAddress), Timeout = TimeSpan.FromHours(5),
+            BaseAddress = new Uri(baseAddress), Timeout = TimeSpan.FromHours(5)
         };
     }
 
@@ -60,7 +62,7 @@ public class SeaweedFS : ISyncFileSystem
     {
         if (logger.HasValue && Debugger.IsAttached)
         {
-            return new LoggingHttpMessageHandler(new LoggerAdapter(logger.Value))
+            return new LoggingHttpMessageHandler(new SerilogToMicrosoftLoggerAdapter(logger.Value))
             {
                 InnerHandler = new HttpClientHandler()
             };
@@ -69,5 +71,8 @@ public class SeaweedFS : ISyncFileSystem
         return new HttpClientHandler();
     }
 
-    public override string ToString() => DisplayName;
+    public override string ToString()
+    {
+        return DisplayName;
+    }
 }

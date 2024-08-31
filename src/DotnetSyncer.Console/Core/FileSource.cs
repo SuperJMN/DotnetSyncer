@@ -13,7 +13,13 @@ public record FileSource
     public ISyncFileSystem Plugin { get; }
     public ZafiroPath Path { get; }
 
-    public Task<Result<IDirectory>> GetFiles() => Plugin.GetFiles(Path);
+    public Task<Result<IDirectory>> GetFiles()
+    {
+        return Plugin.GetFiles(Path);
+    }
 
-    public override string ToString() => $"[{Plugin}]:{Path}";
+    public override string ToString()
+    {
+        return $"[{Plugin}]:{Path}";
+    }
 }

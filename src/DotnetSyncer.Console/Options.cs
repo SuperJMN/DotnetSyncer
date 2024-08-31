@@ -4,9 +4,7 @@ namespace DotnetSyncer.Console;
 
 public class Options
 {
-    [Option("left", Required = true)]
-    public string Left { get; set; }
+    [Option("left", Required = true)] public string Left { get; set; }
 
-    [Option("right", Required = true)]
-    public string Right { get; set; }
+    [Option("right", Required = true)] public string Right { get; set; }
 }

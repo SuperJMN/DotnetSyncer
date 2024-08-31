@@ -9,7 +9,7 @@ public static class FileListMixin
     {
         return leftFiles.FullJoin(rightFiles,
             f => f.FullPath(),
-            left => (FileDiff) new LeftOnlyDiff(left),
+            left => (FileDiff)new LeftOnlyDiff(left),
             right => new RightOnlyDiff(right),
             (left, right) => new BothDiff(left, right));
     }
