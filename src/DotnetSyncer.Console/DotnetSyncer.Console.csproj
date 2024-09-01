@@ -15,8 +15,8 @@
 		<PackageReference Include="CommandLineParser" Version="2.9.1" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
 		<PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
-		<PackageReference Include="Zafiro.FileSystem.Local" Version="9.0.3" />
-		<PackageReference Include="Zafiro.FileSystem.SeaweedFS" Version="9.0.3" />
+		<PackageReference Include="Zafiro.FileSystem.Local" Version="9.0.4" />
+		<PackageReference Include="Zafiro.FileSystem.SeaweedFS" Version="9.0.4" />
 	</ItemGroup>
 
 </Project>
